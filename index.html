@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTrack - Calculadora de Pegada de Carbono Diária</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-decorations" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Barra Superior com Alternador de Tema -->
+    <div class="top-bar">
+      <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Alternar entre modo claro e escuro" title="Alternar Modo Claro / Escuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <span class="theme-label" id="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">EcoTrack</h1>
+          <span class="brand-badge">Sustentabilidade em Ação</span>
+        </div>
+      </div>
+      <p class="brand-description">
+        Monitore sua pegada de carbono diária gerada pelo transporte e descubra como escolhas conscientes fazem a diferença para o nosso planeta.
+      </p>
+    </header>
+
+    <!-- 3 Cartões Informativos no Topo -->
+    <section class="info-cards-section" aria-label="Informações ecológicas">
+      <!-- Card 1: Meta Diária -->
+      <article class="info-card">
+        <div class="card-icon-wrapper meta-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="2" r="2"></circle>
+          </svg>
+        </div>
+        <div class="card-content">
+          <span class="card-label">Meta Diária</span>
+          <h2 class="card-highlight">&le; 4,5 kg CO₂</h2>
+          <p class="card-text">Limite recomendado por pessoa para conter o aquecimento global a menos de 1,5°C.</p>
+        </div>
+      </article>
+
+      <!-- Card 2: Dica do Dia -->
+      <article class="info-card">
+        <div class="card-icon-wrapper dica-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6"></path>
+            <path d="M10 22h4"></path>
+            <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+          </svg>
+        </div>
+        <div class="card-content">
+          <span class="card-label">Dica do Dia</span>
+          <h2 class="card-highlight">Mobilidade Ativa</h2>
+          <p class="card-text">Substituir 1 trajeto curto de carro por caminhada ou bike poupa cerca de 1,2 kg de CO₂.</p>
+        </div>
+      </article>
+
+      <!-- Card 3: Impacto Global -->
+      <article class="info-card">
+        <div class="card-icon-wrapper impacto-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+        </div>
+        <div class="card-content">
+          <span class="card-label">Impacto Global</span>
+          <h2 class="card-highlight">~24% de CO₂</h2>
+          <p class="card-text">O setor de transportes responde por quase um quarto das emissões energéticas mundiais.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Calculadora Interativa -->
+    <main class="calculator-card">
+      <div class="calculator-header">
+        <h2 class="calculator-title">Calcule sua Pegada de Hoje</h2>
+        <p class="calculator-subtitle">Informe a distância percorrida e o meio de transporte utilizado:</p>
+      </div>
+
+      <!-- Alerta de Validação / Erro -->
+      <div id="mensagem-erro" class="alert-error" role="alert" aria-live="assertive" style="display: none;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="texto-erro">Por favor, insira uma distância válida maior ou igual a zero</span>
+      </div>
+
+      <form id="eco-form" class="calculator-form" novalidate>
+        <!-- Campo: Distância percorrida -->
+        <div class="form-group">
+          <label for="distancia" class="form-label">
+            Quilometragem percorrida no dia
+            <span class="unit-badge">em km</span>
+          </label>
+          <div class="input-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <input 
+              type="number" 
+              id="distancia" 
+              name="distancia" 
+              placeholder="Ex: 15" 
+              step="any"
+              min="0"
+              class="form-input"
+              autocomplete="off"
+            >
+            <span class="input-suffix">km</span>
+          </div>
+        </div>
+
+        <!-- Campo: Meio de Transporte -->
+        <div class="form-group">
+          <label for="transporte" class="form-label">Meio de transporte utilizado</label>
+          <div class="select-wrapper">
+            <select id="transporte" name="transporte" class="form-select">
+              <option value="carro" selected>🚗 Carro</option>
+              <option value="onibus">🚌 Ônibus</option>
+              <option value="bicicleta">🚲 Bicicleta</option>
+              <option value="a-pe">🚶 A pé</option>
+            </select>
+            <svg class="select-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Botão Ecológico de Ação -->
+        <button type="submit" id="btn-calcular" class="btn-eco">
+          <span class="btn-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+            </svg>
+          </span>
+          <span class="btn-text">Calcular Impacto</span>
+        </button>
+      </form>
+
+      <!-- Painel de Resultados (Fade-in Suave) -->
+      <section id="resultado-container" class="resultado-container" style="display: none;" aria-live="polite">
+        <div class="resultado-card">
+          <div class="resultado-topo">
+            <span class="resultado-etiqueta">Emissão Estimada do Dia</span>
+            <span id="badge-status" class="badge-status">Impacto Calculado</span>
+          </div>
+
+          <div class="resultado-valor-box">
+            <span class="valor-numero" id="valor-co2">0,00</span>
+            <span class="valor-unidade">kg de CO₂</span>
+          </div>
+
+          <div class="indicador-barra-container">
+            <div class="indicador-rotulos">
+              <span>0 kg (Excelente)</span>
+              <span>2.5 kg</span>
+              <span>5.0 kg+ (Alto)</span>
+            </div>
+            <div class="barra-fundo">
+              <div id="barra-progresso" class="barra-preenchimento" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- Dica de Sustentabilidade -->
+          <div class="dica-box">
+            <div class="dica-header">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4"></path>
+                <path d="m4.93 4.93 2.83 2.83"></path>
+                <path d="M2 12h4"></path>
+                <path d="m4.93 19.07 2.83-2.83"></path>
+                <path d="M12 18v4"></path>
+                <path d="m19.07 19.07-2.83-2.83"></path>
+                <path d="M18 12h4"></path>
+                <path d="m19.07 4.93-2.83 2.83"></path>
+              </svg>
+              <span class="dica-titulo">Dica de Sustentabilidade</span>
+            </div>
+            <p id="dica-sustentabilidade" class="dica-conteudo">
+              Calculando a melhor sugestão para o seu dia a dia...
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Histórico de Registros Diários -->
+    <section class="historico-card" id="secao-historico" aria-label="Histórico de Cálculos">
+      <div class="historico-header">
+        <div>
+          <div class="historico-titulo-box">
+            <svg class="historico-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+              <path d="M12 7v5l4 2"></path>
+            </svg>
+            <h2 class="historico-titulo">Histórico de Registros Diários</h2>
+          </div>
+          <p class="historico-subtitulo">Acompanhe seus cálculos recentes salvos localmente</p>
+        </div>
+        <button id="btn-limpar-historico" class="btn-limpar" type="button" title="Limpar todo o histórico salvo">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18"></path>
+            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+          </svg>
+          <span>Limpar Histórico</span>
+        </button>
+      </div>
+
+      <!-- Indicador Visual de Média de Emissões Acima de 5 kg -->
+      <div id="alerta-media-emissao" class="alerta-media alerta-media-alto" role="alert" style="display: none;">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <div class="alerta-media-info">
+          <strong>Atenção: Média de emissões elevada!</strong>
+          <span id="texto-alerta-media">Sua média recente é de 0,00 kg de CO₂, ultrapassando o limite diário sustentável de 5,0 kg.</span>
+        </div>
+      </div>
+
+      <!-- Resumo da Média de Emissões -->
+      <div id="resumo-media-box" class="resumo-media-box" style="display: none;">
+        <span class="resumo-media-label">Média das emissões registradas:</span>
+        <span class="resumo-media-valor" id="valor-media-historico">0,00 kg de CO₂</span>
+      </div>
+
+      <!-- Lista de Itens do Histórico -->
+      <div id="lista-historico" class="lista-historico">
+        <!-- Itens inseridos dinamicamente por JavaScript -->
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <p><strong>EcoTrack</strong> &bull; Conscientização ambiental e sustentabilidade no seu trajeto diário.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
